@@ -1,24 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useCallback, useEffect, useState } from "react";
+import "./App.css";
+import { getPlaylistItems } from "./api/spotify";
+import SongCard from "./components/SongCard";
+import { GetPlaylistItemsResponse, Song } from "./types/types";
 
+function transformPlaylistItemsResponse(
+  playlistItemsResponse: GetPlaylistItemsResponse
+): Song[] {
+  const songs: Song[] = [];
+  const items = playlistItemsResponse?.tracks?.items;
+
+  items?.forEach((item) =>
+    songs.push({
+      songName: item.track.name,
+      artists: item.track.artists.map((artist) => artist.name),
+    })
+  );
+
+  return songs;
+}
+
+// TODO: review promises and async awaits and useCallback
 function App() {
+  const [songs, setSongs] = useState<Song[]>([]);
+
+  const getPlaylistItemsCallback = useCallback(async (playlistId: string) => {
+    const playlistItemsResponse = await getPlaylistItems(playlistId);
+
+    if (playlistItemsResponse) {
+      setSongs(transformPlaylistItemsResponse(playlistItemsResponse));
+    }
+  }, []);
+
+  useEffect(() => {
+    getPlaylistItemsCallback("2lhj9HBZHC6sh8ayXeWcYg?si=fa7f9ef1f1e944c9");
+  }, [getPlaylistItemsCallback]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Playlist Name</h1>
+      {songs.map((song, index) => (
+        <SongCard
+          key={index} // TODO: switch to id
+          songName={song.songName}
+          artists={song.artists}
+        />
+      ))}
     </div>
   );
 }
