@@ -1,3 +1,49 @@
-.App {
-  text-align: center;
+
+.account-icon{
+    display: flex;
+    align-self: center;
+    font-size: 2.5rem;
+}
+
+.top-toolbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+
+}
+
+.general-search{
+    border: none;
+    background-color: #1F1F1F;
+    color: white;
+}
+
+.main-actions{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-actions{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-bar{
+    border-radius: 18px;
+    background-color: #1F1F1F;
+    width: 20rem;
+    height: 2rem;
+
+}
+
+.search-icon{
+    position: relative;
+    left: 50px;
+}
+
+.song-card{
+    color: white;
 }

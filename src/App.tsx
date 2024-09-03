@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import { getPlaylistItems } from "./api/spotify";
-import SongCard from "./components/SongCard";
 import { GetPlaylistItemsResponse, Song } from "./types/types";
+
+import TopToolbar from "./components/header/TopToolbar";
+import SongCard from "./components/SongCard";
 
 function transformPlaylistItemsResponse(
   playlistItemsResponse: GetPlaylistItemsResponse
@@ -38,6 +40,7 @@ function App() {
 
   return (
     <div className="App">
+      <TopToolbar />
       <h1>Playlist Name</h1>
       {songs.map((song, index) => (
         <SongCard
