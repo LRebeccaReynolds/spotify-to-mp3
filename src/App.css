@@ -104,5 +104,6 @@
 /* === SONG CARD === */
 
 .song-card{
+    border: 1px solid white;
     color: white;
 }

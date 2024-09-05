@@ -2,6 +2,9 @@
 
 This project is a React application that allows you to fetch songs from your spotify account playlists and then find a song on YouTube so you can download it if you have youtube premium.
 
+# Goals
+
+Refresh memory with HTML tags and vanilla CSS. Learn Java and Springboot for the backend.
 
 ## Available Scripts
 
@@ -26,3 +29,12 @@ curl -X POST "https://accounts.spotify.com/api/token" \
 
 ## Credits
 Spotify Icon by Icons8 https://icons8.com/icon/11116/spotify
+
+## States 
+Just some SS to keep track of project state
+
+### V1
+<img src="src/readme-media/v1.png">
+
+### V2
+<img src="src/readme-media/v2.png">
